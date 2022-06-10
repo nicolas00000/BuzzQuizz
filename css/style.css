@@ -49,9 +49,10 @@ img{
     background: #b44545;
     border: 1px dashed #D5D5D5;
     border-radius: 5px;
-    color: #d5d5d591;
+    color: #D5D5D5;
     margin-left:40px ;
     margin-top: 20px;
+    position: relative;
 
 }
 .semConteudo{
@@ -179,3 +180,12 @@ img{
     }
 
 }
+.titulo{
+    position: absolute;
+    bottom: 0px;
+   background-color: rgba(255, 0, 0, 0.123);
+   word-wrap:break-word;
+    width: 100%;
+    font-size: 16px;
+}
+
