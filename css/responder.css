@@ -1,0 +1,49 @@
+.quizz-respostas{
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+    position: fixed;
+    top:0;
+    overflow-y: scroll;
+}
+
+.escondido{
+    /* display: none; */
+}
+
+
+.imagem-fundo{   
+    height: 142px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(image.png);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caixa{
+    /* background-color: white; */
+    /* height: 520px; */
+    width: 70%;
+    margin: 0 auto; 
+    margin-bottom: 22px;
+    position: relative;
+    margin-top: 44px;
+}
+
+.pergunta{
+    background-color: red;
+    height: 130px;
+    width: 40%;
+    margin-top: 22px;
+}
+
+.lista-de-perguntas{
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: green;
+    height: 86.7%;
+}
+
