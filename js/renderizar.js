@@ -15,7 +15,7 @@ function renderizarImprimir(resposta){
         console.log("rodou")
         tabela.innerHTML += `
         
-        <li class="cardVazio"> <h2 class="${qtd[i].title}">titulo </h2><img src="${qtd[i].image}" alt=""> </li>
+        <li class="cardVazio" onclick="abrirQuizz()"> <h2 class="titulo">${qtd[i].title} </h2> <img src="${qtd[i].image}" alt=""> </li>
         
         `
 
