@@ -42,6 +42,7 @@ img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+   
 }
 
 .cardVazio{
@@ -52,6 +53,7 @@ img{
     border-radius: 5px;
     color: #D5D5D5;
     margin-left:40px ;
+    cursor: pointer;
     margin-top: 20px;
     position: relative;
 
