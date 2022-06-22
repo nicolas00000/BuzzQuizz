@@ -62,11 +62,3 @@ function respostas(){
     }
 
 }
-
-
-function abrirQuizz(){
-    const aparecer = document.querySelector(".quizz-respostas")
-    aparecer.classList.toggle("escondido")
-    
-
-}

@@ -1,25 +1,24 @@
+body{
+    background-color:  #d5d5db;
+}
+
 .quizz-respostas{
     width: 100%;
     height: 100%;
-    background-color: rgb(213, 213, 219);
-    position: fixed;
-    top:0;
-    overflow-y: scroll;
     font-weight: bold;
+    margin-top: 50px;
+        position: absolute;
+    top: 0;
+    left: 0;
 }
 
 img{
     left: 0;
     top:0;
     position: absolute;
-  
-}
-.escondido{
-    display: none;
 }
 
-
-.imagem-fundo{   
+.imagem-fundo{    /* capa */
     height: 142px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(image.png);
     display: flex;
@@ -45,10 +44,12 @@ img{
     margin-top: 22px;
     cursor: pointer;
 }
+
 .tituloPg{
     background-color: black;
     text-align: center;
     color: wheat;
+    /* color: red; */
     position: absolute;
     bottom:0 ;
     z-index: 1;
