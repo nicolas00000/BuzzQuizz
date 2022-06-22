@@ -4,74 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/resete.cs" >
+    <!-- <link rel="stylesheet" href="css/resete.cs" > -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responder.css">
     <title>Quiz</title>
 </head>
 <body>
-    <div class="topo">
+    <div class="topo fixo" >
         <H1 class="tituloTopo">BuzzQuizz</H1>
     </div>
 
-<div class="container">    <!--sem conteudo e meus quizes-->
+<section class="container ">    <!--sem conteudo e meus quizes-->
     <div class="meusquizes">
         <div class="cardVazio criarConteudo vazio ">
-            <h3 class="semConteudo">você não possui nenhum quizz</h3 >
+            <h3 class="semConteudo">você não possui nenhum quizz </h3 >
                 <br>
                 <button class="criar">criar</button>
-        </div>
-
-
-        <!-- <div class="cardVazio">
         </div> 
-        <div class="cardVazio">
-            <img src="data:image/jpeg;base64,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" alt="">
-        </div> -->
-      
-</div>
+    </div>
 
     <div class="todos">
         <h3 class="subtitulo">Todos os Quizzes:</h3>
     </div>
-<div class="opcoes">
-    <ul class="lista">
- <li class="cardVazio"> <h2 class="titulo">titulo </h4></li>
-        <li class="cardVazio"></li>
 
-        <li class="cardVazio"></li>
-       
-    </ul>
-</div>
+    <div class="opcoes">
+        <ul class="lista">
+    
+            <li class="cardVazio"></li>
 
-</div> <!--fim container-->
+            <li class="cardVazio"></li>
+        
+        </ul>
+    </div>
+</section> <!--fim container-->
 
-<div class="quizz-respostas  ">
+<section class="quizz-respostas escondido ">
 
-
-    <div class="topo">
+    <div class="topo fixo " >
         <H1 class="tituloTopo">BuzzQuizz</H1>
     </div>
 
-    <div class="imagem-fundo ">
+    <div class="imagem-fundo">
         <img src="" class="imagem-body" alt="">
         <h2 class="titulodoquizz">tituloTopo</h2>
     </div>
   
-
     <br>
+  
     <div class="caixa ">
-       
-<div class="caixadeUL ">
-    <ul class="lista-de-perguntas">
-        <div class="topo">dsa</div> 
-        <div class="pergunta">kjdsj</div><div class="pergunta">kjdsj</div><div class="pergunta">kjdsj</div><div class="pergunta">kjdsj</div>
-    </ul>
-    <br>
-    
-</div>
-   
+        <div class="caixadeUL ">
+            <ul class="lista-de-perguntas">
+                <div class="topo">dsa</div> 
+                <div class="pergunta">kjdsj</div><div class="pergunta">kjdsj</div><div class="pergunta">kjdsj</div><div class="pergunta">kjdsj</div>
+            </ul>
+            <br>
+        </div>   
+    </div>
 
-</div>
+</section>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="js/renderizar.js"></script>
