@@ -1,9 +1,19 @@
 
+let nu = 0;
+function abrirQuizz(idretorno){
+    nu = idretorno
+    console.log(nu)
+    buscardados()
 
-buscardados()
+    const resposta = document.querySelector(".quizz-respostas")
+    resposta.classList.toggle("escondido")
+    const opcoes = document.querySelector(".container")
+    opcoes.classList.toggle("escondido")
+
+}
 
 function buscardados(){
-    const promessa = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes/14")
+    const promessa = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes/" + nu)
     promessa.then(renderizarPergunta)
 }
 
@@ -46,9 +56,15 @@ function respostas(){
     for(let i=0; i <dados[i].answers.length;i++){   
 
         const lista = document.querySelector(`.lista-de-perguntas${numero}`)
-        lista.innerHTML += `<div class="pergunta"> <h3 class="tituloPg"> ${dados[numero].answers[i].text} </h3> <img src="${dados[numero].answers[i].image}">  </div>`
+            
+            lista.innerHTML += `
+                <div class="pergunta">
+                    <h3 class="tituloPg"> ${dados[numero].answers[i].text} </h3>
+                    <img src="${dados[numero].answers[i].image}">
+                </div>`
+                
             soma++
-            console.log(dados)
+            // console.log(dados)
             if(soma  < dados[i].answers.length){
                 console.log("ok")
             }
