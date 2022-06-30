@@ -1,6 +1,7 @@
 // <---------------------RENDERIZANDO JOGOS-------------------------->
 buscarDadosAPI()
 function buscarDadosAPI(){
+    window.scrollTo(0, 0)
     const promessa = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes")
     promessa.then(renderizarJogos)
     promessa.cath(erro)
@@ -9,6 +10,7 @@ function erro(){
     alert("ops! atualiza a pagina ai...")
 }
 function renderizarJogos(resposta){
+     window.scrollTo(0, 0)
     const qtd = resposta.data
     const tabela = document.querySelector(".lista")
     tabela.innerHTML=""
@@ -26,5 +28,5 @@ function renderizarJogos(resposta){
 
 // <---------------------ABRIR JOGO-------------------------->
 
-// responder.js
+
 
