@@ -1,9 +1,9 @@
 let nu = 0;
 
 function abrirQuizz(idretorno){
+    window.scrollTo(0, 0)
     nu = idretorno
     buscardados()
-
     const resposta = document.querySelector(".quizz-respostas")
     resposta.classList.toggle("escondido")
     
@@ -42,19 +42,8 @@ quizz.questions.forEach(function (pergunta, indice) {
     PERGUNTAS += gerarperguntaAleatoria(pergunta, indice)
 });
 
-    // for(let i=0;i<dados.length;i++){
-
-    //     //cada bloco de pergunta
-    //     // caixa.innerHTML += `
-    //     // <ul class="lista-de-perguntas lista-de-perguntas${i}" id="lista-de-perguntas">
-    //     //     <div class="topo " style="background-color: ${dados[i].color};">${dados[i].title}</div> 
-    //     //     ${PERGUNTAS}
-    //     //     </ul>
-    //     // <br>`
-
-       
-    // }   
-
+//aleatoriezando as respostas junto com o indice e retornando na pergunta aleatoria 
+//que é sobreescrevida pelo PERGUNTAS que comecou vazio..
     function gerarperguntaAleatoria(pergunta, indice){
         function aleatorizaAi(){
             return Math.random() - 0.5
@@ -79,68 +68,69 @@ quizz.questions.forEach(function (pergunta, indice) {
      
     function gerarCadaResposta(resposta, indice){
         let classe = "incorreta"
-        if(resposta.answers) {
-            classe = "correta"
-        }
-        return  `
-            <div class="pergunta ${classe}" onclick="verificarTrue(this, ${resposta.isCorrectAnswer}, ${indice})">
-                <h3 class="tituloPg" > ${resposta.text} </h3>
-                <img src="${resposta.image}">
-            </div>`
-    }
-
-    // console.log(caixa)
-    // console.log(dados)
-
-
-
-
-let soma = 0;
-let numero = 0;
-respostas()
-function respostas(){
-    
-
-   
-
-    // for(let i=0; i <dados[i].answers.length;i++){   
+        if(resposta.answers)  classe = "correta"
         
-    //     const lista = document.querySelector(`.lista-de-perguntas${numero}`)
- 
-    //         lista.innerHTML += `
-    //             <div class="pergunta" id="pergunta0" onclick="verificarTrue(this, <!--${dados[numero].answers[i].isCorrectAnswer}--!>)">
-    //                 <h3 class="tituloPg tituloPg${dados[numero].answers[i].isCorrectAnswer}${numero}" id="" > ${dados[numero].answers[i].text} </h3>
-    //                 <img src="${dados[numero].answers[i].image}">
-    //             </div>`
-                
-
-    //         soma++
-    //         if(soma  < dados[i].answers.length){
-    //             console.log("ok")
-    //         }
-    //         else{           //passar para o bloco de perguntas a baixo
-    //             soma=0
-    //             numero+++
-    //             respostas()
-    //         }
-    //     }
-       
+        return  `
+            <div class="resposta resposta${indice} ${resposta.isCorrectAnswer}"  onclick="verificarTrue(this, ${resposta.isCorrectAnswer}, ${indice})">
+                <h3 class="tituloPg rp${indice} " id="foo"> ${resposta.text} </h3>
+                <img src="${resposta.image}">
+            </div>
+            `
     }
 
 }
 
-   let i = 0    //vou usar esse numero para mudar de pergunta
+let respostasCertas = 0
+let contadorRespondidas = 0
+function verificarTrue(elementoClicado, verdadeiro, id){
+    //------------NAO DEIXAR RESPONDER 2 VEZES A MSM PERGUNTA------
+    
+    if(elementoClicado.parentNode.classList.contains("respondido")){
+        return
+    }
+    
+    contadorRespondidas++
+    
+//-----------------ADICIONAR A CLASSE NA PERGUNTA RESPONDIDA---------
+    
+    if(verdadeiro === true){    
+        elementoClicado.parentNode.classList.add("respondido")
+        respostasCertas++
+    }
+        else{
+            elementoClicado.parentNode.classList.add("respondido")    
+        }   
+    
+    
+//------------------ADICIONANDO TRANSPARENCIA NAS RESPOSTAS-------
+    
+    let respostas = elementoClicado.parentNode.querySelectorAll(".resposta")
+    const elemento = Array.from(respostas)
 
-function verificarTrue(clicado, verdadeiro){
+    
+    for(let i =0 ; i < elemento.length; i++){
+        const resposta  = elemento[i]
+        if(elementoClicado !== resposta){
+            resposta.classList.add("trasparente")
+        }
+    }
 
 
-    //  const certa = document.querySelector(".tituloPgtrue0")  
-    //  const errado =document.querySelector(".tituloPgfalse0" )
-    //  i++  
-    // if(clicado.classList.contains("true") ||clicado.classList.contains("false") ){
-    //     certa.classList.add("correto")
-    //     errado.classList.add("errado")
-// 1:00:00
-    // }
+//----------------ADICIONANDO VERDADEIRO OU FALSO NA PERGUNTA CLICADA----
 
-  }
+    const lista = elementoClicado.parentNode; // isso é o pai do elemento clicado
+    const listaFilhos = lista.children; // retornando uma aray com todos filhos dentro
+
+    for(let i = 0 ; i < listaFilhos.length; i++){    //para cada volta dada na array
+    
+        if(listaFilhos[i].classList.contains('true')){   //verifica por cada indice se alguma contem a resposta verdadeira
+            const correto = listaFilhos[i].querySelector("h3");  //se tiver verdadeiro na classe do filho ele pega de dentro do filho o H3
+            correto.classList.add("true")                           //e adiciona a classe true no h3, assim ficando verde
+        }
+        
+        if(listaFilhos[i].classList.contains("false")){
+            const errado = listaFilhos[i].querySelector("h3");
+            errado.classList.add("false");
+        }
+    }
+}
