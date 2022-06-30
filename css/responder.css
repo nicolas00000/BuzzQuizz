@@ -1,5 +1,5 @@
 body{
-    background-color:  #d5d5db;
+    background-color:  #2e2e30; /*#d5d5db*/
 }
 
 .quizz-respostas{
@@ -36,35 +36,52 @@ img{
     margin-top: 44px;
 }
 
-.pergunta{
+.resposta{
     background-color: rgba(255, 0, 0, 0.226);
     position: relative;
     height: 172px;
     width: 40%;
     margin-top: 22px;
     cursor: pointer;
+    margin-top: 41px;
 }
 
+
+
 .tituloPg{
-    background-color: black;
+    background-color: #2e2e30;
     text-align: center;
     color: wheat;
-    /* color: red; */
     position: absolute;
-    bottom:0 ;
+    bottom: -25px ;
     z-index: 1;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    max-width: 100%;
+    word-break: break-word;
 }
 
 .lista-de-perguntas{
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-around;
-    height: 86.7%;
+    margin-bottom: 43px;
 }
 
+
+.true{
+    color:green;
+}
+
+.false{
+    color:red;
+}
+
+.uma{
+    width: 50%;
+    height: 120px;
+}

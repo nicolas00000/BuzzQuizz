@@ -6,7 +6,7 @@
 
 body{
     height: 100vh;
-    background-color: #c4bcbc; 
+    background-color: #332f2f;  /*#c4bcbc*/
 }
 
 .topo{
@@ -17,6 +17,10 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align :center;
+    font-family: "Roboto", sans-serif;
+    color: #ffffff;
+    font-size: 23px;
 }
 .fixo{
     position:fixed; 
@@ -36,27 +40,39 @@ body{
     font-weight: 700;
     font-size: 37px;
     line-height: 43px;
+    
    
 }
 
+.titulo{
+    position: absolute;
+    word-wrap:break-word;
+    bottom:5%;
+    left:5%;
+    max-width:90%;
+    z-index: 1;
+}
 .container {        /* MEUS JA CRIADOS*/
     width: 100%;
     align-items:flex-start;
     flex-wrap: wrap;
+    margin:103px auto;
 }
-
 
 img{
     width: 100%;
     height: 100%; 
     object-fit: cover;
-   border-radius: 5px;
+
 }
 .vazio{
     border: 1px dashed #D5D5D5;
     margin-top: 30px;
 }
-
+.imgOpcoes{
+    border-radius: 15px;
+    position: absolute;
+}
 .sombra{
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 56.58%, #0c0c0cfa 81%);
     width: 100%;
@@ -64,12 +80,19 @@ img{
     top:0;
     left:0;
     height: 100%;
+    border-radius: 15px;
 }
+
+.trasparente{
+    opacity: 30%;
+}
+
+
 .cardVazio{
     width: 340px;
     height: 181px;
     background: #b44545;
-    border-radius: 5px;
+    border-radius: 15px;
     color: #D5D5D5;
     margin-left:40px ;
     cursor: pointer;
@@ -108,11 +131,6 @@ img{
     cursor: pointer;
 }
 
-.escondido{      /*apagar se ja criado algum quiz*/
-    display: none ;
-}
-
-
 .meusquizes{
     width: 1200px;
 }
@@ -128,8 +146,7 @@ img{
  }
 
 .todos{
-    height: 23px;
- 
+    height: 23px; 
     width: 90%;
     font-family: 'Roboto';
     font-style: normal;
@@ -211,15 +228,16 @@ img{
 }
 .titulodoquizz{
     z-index: 1;
-}
+    font-family: "Roboto", sans-serif;
+    color: #ffffff;
+    font-size: 39px;
+    }
 
-.titulo{
-    position: absolute;
-    bottom: 10px;
-    left: 20px;
-    word-wrap:break-word;
-    width: 100%;
-    font-size: 16px;
-    z-index: 1;
-}
 
+    .true{
+        color:green;
+    }
+    
+    .false{
+        color:red;
+    }
