@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/resete.css">
+    <link rel="stylesheet" href="css/label.css">
+    <title>crie o seu </title>
+</head>
+<body>
+    <div class="topoFixo">BuzzQuiz</div>
+    <div class="container">
+            <span class="titulo">   Comece pelo comeco</span>
+        <label for="" class="caixa">
+            
+            <input class="campoTexto"  id="titulo" minlength="20" maxlength="65" type="text" required placeholder="Título do seu quizz">
+            
+            <input class="campoTexto" id="URLcapa" type="text" required placeholder="URL da imagem do seu quizz">
+            
+            <input class="campoTexto" min="3" id="qtdPerguntas" type="number" required placeholder="Quantidades de perguntas do seu quizz">
+            
+            <input class="campoTexto" id="qtdNiveis" min="2" type="number" required placeholder="Quantidade de níveis do quizz">
+            
+            <button id="butao" onclick="verificarTodosPreenchidos()">Prosseguir para criar</button>
+      
+        </label>
+    </div>
+
+    <div class="container escondido container1">
+        <span class="titulo">   Crie suas perguntas</span>
+
+    <label for="" class="caixa caixaResponder">
+
+      
+        <!-- <button id="butao" onclick="verificarTodosPreenchidos()">Prosseguir para criar</button> -->
+  
+    </label>
+</div>
+</body>
+<script src="js/enviargame.js"></script>
+</html>
