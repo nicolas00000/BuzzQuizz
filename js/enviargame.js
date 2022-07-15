@@ -1,9 +1,9 @@
 
 
-let travar = 0
+let travar = false;
 document.onkeydown = teclado
 function teclado(e){
-    if(!travar == 0){
+    if(travar){
         return
     }
     if(e.keyCode===13){
@@ -17,9 +17,17 @@ function verificarTodosPreenchidos(){
     const qtdPerguntas = document.getElementById("qtdPerguntas").value
     const qtdNiveis = document.getElementById("qtdNiveis").value
 
-    if(!titulo == "" && !capa == "" &&!qtdPerguntas== "" &&!qtdNiveis== "" && qtdNiveis >= 2 && qtdPerguntas >= 3 ){
+    if(
+        titulo != "" && 
+        capa != ""   &&
+        qtdPerguntas != "" &&
+        qtdNiveis != "" && 
+        qtdNiveis >= 2 && 
+        qtdPerguntas >= 3 && 
+        qtdPerguntas <= 6 && 
+        qtdNiveis <= 3 ){
         criarPerguntas()
-        travar++
+        travar = true;
     }else{
         alert("Preencha todos os campos corretamente")
     }
@@ -42,36 +50,36 @@ function verificarTodosPreenchidos(){
           </h4>
 
           <div class="paraEsconder escondendo">
-            <input class="campoTexto" id="titulo" type="text" required placeholder="Texto da pergunta">
-            <input class="campoTexto" id="titulo" type="text" required maxlength="7" placeholder="Cor de fundo da pergunta">
+            <input class="campoTexto tituloPg"  id="titulo" type="text" required placeholder="Texto da pergunta">
+            <input class="campoTexto cor" id="titulo" type="text" required maxlength="7" placeholder="Cor de fundo da pergunta">
            
             <h4>Respostas correta</h4>
-            <input class="campoTexto" id="titulo" type="text" required placeholder="Texto da resposta">
-            <input class="campoTexto" id="titulo" type="text" required placeholder="URL da resposta">
+            <input class="campoTexto respostaCorreta-${i}" id="titulo" type="text" required placeholder="Texto da resposta">
+            <input class="campoTexto imgCorreta" id="titulo" type="text" required placeholder="URL da resposta">
         
             <br>
 
-            
             <h4>Resposta incorreta</h4>
-            ${respostasIncorretas()}
+            ${respostasIncorretas(i)}
            </div>
            </div>
             `
         }
+        caixa.innerHTML += `  <button id="butao" onclick="enviarDadosNomeQuizz()">Prosseguir para criar</button>`;
     }
 
-    function respostasIncorretas(){
-        return `
-        <input class="campoTexto" id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto" id="titulo" type="text" required placeholder="URL da resposta">
-        
-        <input class="campoTexto" id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto" id="titulo" type="text" required placeholder="URL da resposta">
-        
-        <input class="campoTexto" id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto" id="titulo" type="text" required placeholder="URL da resposta">
-        
 
+    function respostasIncorretas(index){
+        return `
+        <input class="campoTexto respostaIncorreta-${index}" id="titulo" type="text" required placeholder="Texto resposta incorreta">
+        <input class="campoTexto imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        
+        <input class="campoTexto respostaIncorreta-${index}"  id="titulo" type="text" required placeholder="Texto resposta incorreta">
+        <input class="campoTexto imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        
+        <input class="campoTexto respostaIncorreta-${index}" id="titulo" type="text" required placeholder="Texto resposta incorreta">
+        <input class="campoTexto imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        
         `
     }
 }
@@ -84,4 +92,113 @@ function abrir(elemento){
     filho.classList.toggle("escondendo") 
 }
 
+let tituloQuizz = ""
+let capaQuizz = ""
+let quantidadePerguntas = ""
+let quantidadeNiveis = ""
 
+function enviarDadosNomeQuizz(){
+    const titulo = document.getElementById("titulo").value
+    const capa = document.getElementById("URLcapa").value
+    const qtdPerguntas = document.getElementById("qtdPerguntas").value
+    const qtdNiveis = document.getElementById("qtdNiveis").value
+
+    tituloQuizz= titulo
+    capaQuizz= capa
+    quantidadePerguntas = qtdPerguntas
+    quantidadeNiveis = qtdNiveis
+
+    const tituloPG = document.querySelectorAll(".tituloPg")
+    
+    
+
+    let perguntas = []
+    let respostaErrada = []
+    let  answers = []
+    for(let i = 0 ; i < quantidadePerguntas;i++){
+        perguntas.push(
+            {
+                title: tituloPG[i].value,
+                color: "#123456",
+                answers: []
+            }
+        )
+     }
+
+
+     for(let i = 0 ; i < qtdPerguntas; i++){
+    
+        let quizz= [{
+                title: tituloQuizz,
+                image: capaQuizz,
+                questions: perguntas
+            }]
+        
+            console.log(quizz)
+    }
+    let img = []
+    //adicionando respostas erradas para dentro de answers de perguntas
+     for(let i = 0; i < perguntas.length; i++) {
+        let respostasErradas = document.querySelectorAll(".respostaIncorreta-"+i); 
+        let imagemIncorreta = document.querySelectorAll("imgIncorreta-"+i); 
+        
+        respostasErradas.forEach((element) => {
+            perguntas[i].answers.push({
+                text: element.value,
+                image: "imagem.aqui.com",
+                isCorrectAnswer: false
+            })
+        })
+
+        
+     }
+
+     //adicionando resposta correta para dentro de answers de perguntas
+     for(let i = 0; i < perguntas.length; i++) {
+        let respostasCorretas = document.querySelectorAll(".respostaCorreta-"+i); 
+        respostasCorretas.forEach((element) => {
+            perguntas[i].answers.push({
+                text: element.value,
+                image: "https://http.cat/411.jpg", //imagem correta
+                isCorrectAnswer: true
+            })
+        })
+     }
+     
+      
+
+    }
+    //     levels: [
+    //         {
+    //             title: "Título do nível 1",
+    //             image: "https://http.cat/411.jpg",
+    //             text: "Descrição do nível 1",
+    //             minValue: 0
+    //         },
+    //         {
+    //             title: "Título do nível 2",
+    //             image: "https://http.cat/412.jpg",
+    //             text: "Descrição do nível 2",
+    //             minValue: 50
+    //         }
+    //     ]
+    // }
+
+
+    
+    const imgCorreta  = document.querySelectorAll(".imgCorreta")
+    
+    const imgIncorreta  = document.querySelectorAll(".imgIncorreta")
+
+
+    for(let i = 0 ; i < qtdPerguntas; i++){
+
+        let umapergunta = [{
+            title: tituloPG[i].value,
+            color: Cor[i].value,
+            answers: [alternativas[i]]
+        }]
+        console.log(umapergunta)
+    }
+
+   
