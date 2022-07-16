@@ -55,7 +55,7 @@ function verificarTodosPreenchidos(){
            
             <h4>Respostas correta</h4>
             <input class="campoTexto respostaCorreta-${i}" id="titulo" type="text" required placeholder="Texto da resposta">
-            <input class="campoTexto imgCorreta" id="titulo" type="text" required placeholder="URL da resposta">
+            <input class="campoTexto imgCorreta-${i}" id="titulo" type="text" required placeholder="URL da resposta">
         
             <br>
 
@@ -72,18 +72,17 @@ function verificarTodosPreenchidos(){
     function respostasIncorretas(index){
         return `
         <input class="campoTexto respostaIncorreta-${index}" id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        <input class="campoTexto imgfalse imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
         
         <input class="campoTexto respostaIncorreta-${index}"  id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        <input class="campoTexto imgfalse imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
         
         <input class="campoTexto respostaIncorreta-${index}" id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        <input class="campoTexto imgfalse imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
         
         `
     }
 }
-
 
 function abrir(elemento){
     const pai = elemento.parentNode.parentNode
@@ -92,10 +91,6 @@ function abrir(elemento){
     filho.classList.toggle("escondendo") 
 }
 
-let tituloQuizz = ""
-let capaQuizz = ""
-let quantidadePerguntas = ""
-let quantidadeNiveis = ""
 
 function enviarDadosNomeQuizz(){
     const titulo = document.getElementById("titulo").value
@@ -103,71 +98,71 @@ function enviarDadosNomeQuizz(){
     const qtdPerguntas = document.getElementById("qtdPerguntas").value
     const qtdNiveis = document.getElementById("qtdNiveis").value
 
-    tituloQuizz= titulo
-    capaQuizz= capa
-    quantidadePerguntas = qtdPerguntas
-    quantidadeNiveis = qtdNiveis
-
     const tituloPG = document.querySelectorAll(".tituloPg")
     
+    const cor = document.querySelectorAll(".cor")
     
 
     let perguntas = []
-    let respostaErrada = []
-    let  answers = []
-    for(let i = 0 ; i < quantidadePerguntas;i++){
-        perguntas.push(
-            {
-                title: tituloPG[i].value,
-                color: "#123456",
-                answers: []
-            }
-        )
-     }
+        for(let i = 0 ; i < qtdPerguntas;i++){
+            perguntas.push(
+                {
+                    title: tituloPG[i].value,
+                    color: cor[i].value,
+                    answers: []
+                }
+            )
+        }
 
 
-     for(let i = 0 ; i < qtdPerguntas; i++){
+        for(let i = 0 ; i < qtdPerguntas; i++){
+        
+            let quizz= [{
+                    title: titulo,
+                    image: capa,
+                    questions: perguntas
+                }]
+            
+                console.log(quizz)
+        }
+
+        //adicionando respostas erradas para dentro de answers de perguntas
+     
+    let arrayDeImgFalse = []
+    for(let i = 0; i < perguntas.length; i++) {
+    let respostasErradas = document.querySelectorAll(".respostaIncorreta-"+i); 
     
-        let quizz= [{
-                title: tituloQuizz,
-                image: capaQuizz,
-                questions: perguntas
-            }]
-        
-            console.log(quizz)
-    }
-    let img = []
-    //adicionando respostas erradas para dentro de answers de perguntas
-     for(let i = 0; i < perguntas.length; i++) {
-        let respostasErradas = document.querySelectorAll(".respostaIncorreta-"+i); 
-        let imagemIncorreta = document.querySelectorAll("imgIncorreta-"+i); 
-        
-        respostasErradas.forEach((element) => {
-            perguntas[i].answers.push({
-                text: element.value,
-                image: "imagem.aqui.com",
-                isCorrectAnswer: false
-            })
+    respostasErradas.forEach((element) => {
+        perguntas[i].answers.push({
+            text: element.value,
+            image: arrayDeImgFalse[i],
+            isCorrectAnswer: false
         })
+    })
 
-        
-     }
+    }
+     console.log(arrayDeImgFalse)
 
-     //adicionando resposta correta para dentro de answers de perguntas
+
+     //      adicionando resposta correta e imagemTrue para dentro de answers de perguntas
+     
      for(let i = 0; i < perguntas.length; i++) {
-        let respostasCorretas = document.querySelectorAll(".respostaCorreta-"+i); 
+        let respostasCorretas = document.querySelectorAll(".respostaCorreta-"+i);
+        let imagemCorreta = document.querySelector(".imgCorreta-"+i); 
+         
         respostasCorretas.forEach((element) => {
             perguntas[i].answers.push({
                 text: element.value,
-                image: "https://http.cat/411.jpg", //imagem correta
+                image: imagemCorreta.value, //imagem correta
                 isCorrectAnswer: true
             })
         })
      }
      
       
-
     }
+
+
     //     levels: [
     //         {
     //             title: "Título do nível 1",
@@ -185,20 +180,4 @@ function enviarDadosNomeQuizz(){
     // }
 
 
-    
-    const imgCorreta  = document.querySelectorAll(".imgCorreta")
-    
-    const imgIncorreta  = document.querySelectorAll(".imgIncorreta")
 
-
-    for(let i = 0 ; i < qtdPerguntas; i++){
-
-        let umapergunta = [{
-            title: tituloPG[i].value,
-            color: Cor[i].value,
-            answers: [alternativas[i]]
-        }]
-        console.log(umapergunta)
-    }
-
-   
