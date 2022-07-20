@@ -40,7 +40,7 @@ function verificarTodosPreenchidos(){
         const caixa = document.querySelector(".caixaResponder")
     
         for(let i =0 ; i < qtdPerguntas; i++){
-           console.log("rodei")
+
            caixa.innerHTML += `       
            <div class="cada fechado"> 
             <h4>Pergunta ${i+1} 
@@ -127,23 +127,19 @@ function enviarDadosNomeQuizz(){
 
         //adicionando respostas erradas para dentro de answers de perguntas
         
-        let arrayDeImgFalse = []
+     
            
         for(let i = 0; i < perguntas.length; i++) {
             let imagensIncorretas = document.querySelectorAll(`.imgIncorreta-`+i)
             let respostasErradas = document.querySelectorAll(".respostaIncorreta-"+i);
 
-            respostasErradas.forEach((element) => {
+            respostasErradas.forEach((element, ind) => {
                 perguntas[i].answers.push({
                     text: element.value,
-                    image: urlImg() ,
+                    image: imagensIncorretas[ind].value ,
                     isCorrectAnswer: false
                 })
-            }) 
-
-            function urlImg(){
-                    
-            }
+        }) 
             
         }
      
