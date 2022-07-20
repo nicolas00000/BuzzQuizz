@@ -105,7 +105,6 @@ function verificarTrue(elementoClicado, verdadeiro, id){
     }
 //-----------------ADICIONAR A CLASSE NA PERGUNTA RESPONDIDA---------
     let metade = totaldeperguntas.length*10/2
-    alert(level.length + "qunatidade de level")
     
     if(verdadeiro === true){    
         elementoClicado.parentNode.classList.add("respondido")
@@ -116,12 +115,10 @@ function verificarTrue(elementoClicado, verdadeiro, id){
 
      if(metade%2 === 1){
         metade+= 5
-        alert("adicionei cinco agora ficou " +metade)
-    }
+        }
 
      if(respostasCertas === metade && nivelLevel === 0 ){
         nivelLevel++
-        alert("foi metade " + respostasCertas)
     }
 
      else{
@@ -137,7 +134,6 @@ function verificarTrue(elementoClicado, verdadeiro, id){
         }
         nivelLevel++
         y++
-        alert("foi quase tudo")
      }
      
     

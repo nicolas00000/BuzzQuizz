@@ -72,13 +72,13 @@ function verificarTodosPreenchidos(){
     function respostasIncorretas(index){
         return `
         <input class="campoTexto respostaIncorreta-${index}" id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto imgfalse imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        <input class="campoTexto imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
         
         <input class="campoTexto respostaIncorreta-${index}"  id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto imgfalse imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        <input class="campoTexto  imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
         
         <input class="campoTexto respostaIncorreta-${index}" id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto imgfalse imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        <input class="campoTexto  imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
         
         `
     }
@@ -99,7 +99,6 @@ function enviarDadosNomeQuizz(){
     const qtdNiveis = document.getElementById("qtdNiveis").value
 
     const tituloPG = document.querySelectorAll(".tituloPg")
-    
     const cor = document.querySelectorAll(".cor")
     
 
@@ -127,23 +126,30 @@ function enviarDadosNomeQuizz(){
         }
 
         //adicionando respostas erradas para dentro de answers de perguntas
+        
+        let arrayDeImgFalse = []
+           
+        for(let i = 0; i < perguntas.length; i++) {
+            let imagensIncorretas = document.querySelectorAll(`.imgIncorreta-`+i)
+            let respostasErradas = document.querySelectorAll(".respostaIncorreta-"+i);
+
+            respostasErradas.forEach((element) => {
+                perguntas[i].answers.push({
+                    text: element.value,
+                    image: urlImg() ,
+                    isCorrectAnswer: false
+                })
+            }) 
+
+            function urlImg(){
+                    
+            }
+            
+        }
      
-    let arrayDeImgFalse = []
-    for(let i = 0; i < perguntas.length; i++) {
-    let respostasErradas = document.querySelectorAll(".respostaIncorreta-"+i); 
-    
-    respostasErradas.forEach((element) => {
-        perguntas[i].answers.push({
-            text: element.value,
-            image: arrayDeImgFalse[i],
-            isCorrectAnswer: false
-        })
-    })
+       
 
-    }
-     console.log(arrayDeImgFalse)
-
-
+        
      //      adicionando resposta correta e imagemTrue para dentro de answers de perguntas
      
      for(let i = 0; i < perguntas.length; i++) {
