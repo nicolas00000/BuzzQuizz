@@ -119,14 +119,14 @@ function enviarDadosNomeQuizz(){
             let quizz= [{
                     title: titulo,
                     image: capa,
-                    questions: perguntas
+                    questions: perguntas,
+                    levels: []
                 }]
             
                 console.log(quizz)
         }
 
         //adicionando respostas erradas para dentro de answers de perguntas
-        
      
            
         for(let i = 0; i < perguntas.length; i++) {
@@ -139,30 +139,81 @@ function enviarDadosNomeQuizz(){
                     image: imagensIncorretas[ind].value ,
                     isCorrectAnswer: false
                 })
-        }) 
-            
+            }) 
         }
      
        
-
-        
      //      adicionando resposta correta e imagemTrue para dentro de answers de perguntas
      
-     for(let i = 0; i < perguntas.length; i++) {
-        let respostasCorretas = document.querySelectorAll(".respostaCorreta-"+i);
-        let imagemCorreta = document.querySelector(".imgCorreta-"+i); 
+        for(let i = 0; i < perguntas.length; i++) {
+            let respostasCorretas = document.querySelectorAll(".respostaCorreta-"+i);
+            let imagemCorreta = document.querySelector(".imgCorreta-"+i); 
          
-        respostasCorretas.forEach((element) => {
-            perguntas[i].answers.push({
-                text: element.value,
-                image: imagemCorreta.value, //imagem correta
-                isCorrectAnswer: true
+            respostasCorretas.forEach((element) => {
+                perguntas[i].answers.push({
+                    text: element.value,
+                    image: imagemCorreta.value, //imagem correta
+                    isCorrectAnswer: true
+                })
             })
-        })
-     }
-     
-      
+        }
+    porsseguirNiveis()
     }
+
+function porsseguirNiveis(){
+    const Nv = document.getElementById("qtdNiveis").value
+    const caixa = document.querySelector(".container1")
+    caixa.innerHTML = `       <h1 class="titulo titulonv"> Agora, decida os níveis </h1>`
+    for(let i = 0 ; i < Nv ; i ++ ){
+        caixa.innerHTML+= `
+        <div class="cada fechado" > 
+        <h4 >Pergunta ${i+1} 
+                <svg onclick="abrir(this)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            </svg>
+         </h4> 
+          
+        <div class="paraEsconder escondendo">
+                <input class="TituloNv-${+i}" placeholder="Titúlo do nível"></input>
+                
+                <input class="PorcentagemNv-${+i}" placeholder="% do acerto mínima"></input>
+                
+                <input class="URLnv-${+i}" placeholder="URL da img do nível"></input>    
+            
+                <input class="TxtNv-${+i}" placeholder="Descrição do nível"></input>
+        
+                </div>
+                
+        </div>`   
+
+        
+    }
+
+    caixa.innerHTML += `  <button onclick="validarUrlNiveis()"> Finalizar</button> `;
+
+}
+
+let NIVEL= []
+function validarUrlNiveis(){
+  
+    const Nv = document.getElementById("qtdNiveis").value
+    for(let i= 0; i < Nv; i++){
+        let tituloNV = document.querySelector(".TituloNv-"+i).value;
+        let porCem = document.querySelector(".PorcentagemNv-"+i).value;
+        let url = document.querySelector(`.URLnv-${+i}`).value;
+        let descri = document.querySelector(`.TxtNv-${+i}`).value;
+        
+        NIVEL.push({
+            title: tituloNV,
+			image: url,
+			text: descri,
+			minValue: porCem
+        })
+        
+    }
+
+    console.log(quizz)
+} 
 
 
     //     levels: [
