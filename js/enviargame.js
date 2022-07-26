@@ -1,5 +1,6 @@
 
 
+let NIVEL= []
 let travar = false;
 document.onkeydown = teclado
 function teclado(e){
@@ -91,7 +92,7 @@ function abrir(elemento){
     filho.classList.toggle("escondendo") 
 }
 
-
+let quizz= []
 function enviarDadosNomeQuizz(){
     const titulo = document.getElementById("titulo").value
     const capa = document.getElementById("URLcapa").value
@@ -116,14 +117,14 @@ function enviarDadosNomeQuizz(){
 
         for(let i = 0 ; i < qtdPerguntas; i++){
         
-            let quizz= [{
+             quizz= [{
                     title: titulo,
                     image: capa,
                     questions: perguntas,
-                    levels: []
+                    levels: NIVEL
                 }]
             
-                console.log(quizz)
+                // console.log(quizz)
         }
 
         //adicionando respostas erradas para dentro de answers de perguntas
@@ -167,7 +168,7 @@ function porsseguirNiveis(){
     for(let i = 0 ; i < Nv ; i ++ ){
         caixa.innerHTML+= `
         <div class="cada fechado" > 
-        <h4 >Pergunta ${i+1} 
+        <h4 >Nivel ${i+1} 
                 <svg onclick="abrir(this)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
             </svg>
@@ -193,7 +194,6 @@ function porsseguirNiveis(){
 
 }
 
-let NIVEL= []
 function validarUrlNiveis(){
   
     const Nv = document.getElementById("qtdNiveis").value
@@ -212,6 +212,9 @@ function validarUrlNiveis(){
         
     }
 
+    console.log(NIVEL)
+    
+    let enviar =  axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes", quizz)
     console.log(quizz)
 } 
 
