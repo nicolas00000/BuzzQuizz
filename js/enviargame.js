@@ -1,5 +1,3 @@
-
-
 let NIVEL= []
 let travar = false;
 document.onkeydown = teclado
@@ -92,7 +90,7 @@ function abrir(elemento){
     filho.classList.toggle("escondendo") 
 }
 
-let quizz= []
+let quizz ={}
 function enviarDadosNomeQuizz(){
     const titulo = document.getElementById("titulo").value
     const capa = document.getElementById("URLcapa").value
@@ -117,12 +115,12 @@ function enviarDadosNomeQuizz(){
 
         for(let i = 0 ; i < qtdPerguntas; i++){
         
-             quizz= [{
+             quizz= {
                     title: titulo,
                     image: capa,
                     questions: perguntas,
                     levels: NIVEL
-                }]
+                }
             
                 // console.log(quizz)
         }
