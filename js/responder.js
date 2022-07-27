@@ -179,7 +179,6 @@ function mostrarResultado(){
     
 
     if(contadorRespondidas === totaldeperguntas.length){
-        alert('acabou')
         result.innerHTML += `
              <div class="resultado "> 
                   <div class="topo"> ${level[nivelLevel].title} ${nivelLevel}
