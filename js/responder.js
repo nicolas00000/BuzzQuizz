@@ -184,7 +184,8 @@ function mostrarResultado(){
         <div class="topo"> ${level[nivelLevel].title} 
         </div>
         <div class='mostrarResult'>
-              <img src="${level[nivelLevel].image}"  style="position:relative;">
+              <img src="${level[nivelLevel].image}"  style="position:relative;     width: 50%;
+              margin-right: 10px;">
               <div class="texto" style="word-wrap: break-word; max-width: 300px;">
                   ${level[nivelLevel].text}
               </div>
