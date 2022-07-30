@@ -4,6 +4,7 @@ body{
     display:flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 .container{
     max-width: 400px;

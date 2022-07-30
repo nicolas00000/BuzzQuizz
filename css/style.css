@@ -2,11 +2,12 @@
     margin: 0%;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 body{
     height: 100vh;
-    background-color: #332f2f;  /*#c4bcbc*/
+    background:   #c4bcbc;
 }
 
 .topo{
@@ -230,9 +231,6 @@ body{
         justify-content: center;
     }
 
-    .lista{
-        width: 100%;
-    }
     .cardVazio{
         width: 100%;
         margin-left: 0px;
@@ -263,13 +261,12 @@ body{
     }
 
 
-    .resultado{
+     .resultado{
         width: 80%;
-        margin:0 auto;
-        background-color: #EC362D;
-        height:500px;
+        margin: 0 auto;
+        min-height: 300px;
         flex-direction: column;
-        display :flex;
+        display: flex;
     }
 
     .img-result{
@@ -290,8 +287,15 @@ body{
     }
 
     .img-result div{
-        /* background-color: red; */
         max-width:47%;
         padding:20px;
         font-size:26px;
     }
+
+
+.mostrarResult{
+    display: flex;
+    color: #484848;
+    padding: 10px;
+    justify-content: space-evenly;
+}

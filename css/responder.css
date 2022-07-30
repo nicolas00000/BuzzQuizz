@@ -1,5 +1,6 @@
 body{
-    background-color:  #2e2e30; /*#d5d5db*/
+    background-color:   #d5d5db;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .quizz-respostas{
@@ -27,13 +28,12 @@ img{
 }
 
 .caixa{
-    /* background-color: white; */
-    /* height: 520px; */
-    width: 70%;
+    width: 90%;
+    max-width: 759px;
     margin: 0 auto; 
     margin-bottom: 22px;
     position: relative;
-    margin-top: 44px;
+    margin-top: 44px;  
 }
 
 .resposta{
@@ -49,9 +49,11 @@ img{
 
 
 .tituloPg{
-    background-color: #2e2e30;
     text-align: center;
-    color: wheat;
+    color: black;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
     position: absolute;
     bottom: -25px ;
     z-index: 1;
