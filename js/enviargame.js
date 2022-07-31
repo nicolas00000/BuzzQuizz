@@ -50,11 +50,11 @@ function verificarTodosPreenchidos(){
 
           <div class="paraEsconder escondendo">
             <input class="campoTexto tituloPg"  id="titulo" type="text" required placeholder="Texto da pergunta">
-            <input class="campoTexto cor" id="titulo" type="text" required maxlength="7" placeholder="Cor de fundo da pergunta">
+            <input class="campoTexto cor" id="titulo" type="text" required maxlength="7" placeholder="utiloze # com hexadecimal">
            
             <h4>Respostas correta</h4>
             <input class="campoTexto respostaCorreta-${i}" id="titulo" type="text" required placeholder="Texto da resposta">
-            <input class="campoTexto imgCorreta-${i}" id="titulo" type="text" required placeholder="URL da resposta">
+            <input class="campoTexto imgCorreta-${i}" id="titulo" type="text" required placeholder="URL da imagem da alternativa">
         
             <br>
 
@@ -71,13 +71,13 @@ function verificarTodosPreenchidos(){
     function respostasIncorretas(index){
         return `
         <input class="campoTexto respostaIncorreta-${index}" id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        <input class="campoTexto imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da imagem da alternativa">
         
         <input class="campoTexto respostaIncorreta-${index}"  id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto  imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        <input class="campoTexto  imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da imagem da alternativa">
         
         <input class="campoTexto respostaIncorreta-${index}" id="titulo" type="text" required placeholder="Texto resposta incorreta">
-        <input class="campoTexto  imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da resposta">
+        <input class="campoTexto  imgIncorreta-${index}" id="titulo" type="text" required placeholder="URL da imagem da alternativa">
         
         `
     }
