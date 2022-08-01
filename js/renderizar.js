@@ -15,7 +15,6 @@ function renderizarJogos(resposta){
     const tabela = document.querySelector(".lista")
     tabela.innerHTML=""
     for (let i = 0; i < qtd.length ; i++){ 
-        console.log("rodou")
         tabela.innerHTML += `
         <li class="cardVazio" onclick="abrirQuizz(${qtd[i].id})">
             <h2 class="titulo">${qtd[i].title} </h2>
