@@ -81,8 +81,10 @@ function renderizarPergunta(resposta){
             
             return  `
                 <div class="resposta resposta${indice} ${resposta.isCorrectAnswer}"  onclick="verificarTrue(this, ${resposta.isCorrectAnswer}, ${indice})">
+                    <img src="${resposta.image}" class="imgAlternativa" style="  width: 100%;">
+                    <br>
                     <h3 class="tituloPg rp${indice} " id="foo"> ${resposta.text} </h3>
-                    <img src="${resposta.image}">
+                    
                 </div>
                 `
         }
@@ -101,7 +103,7 @@ function verificarTrue(elementoClicado, verdadeiro, id){
     contadorRespondidas++
 
     if(contadorRespondidas === totaldeperguntas.length){
-    setTimeout(mostrarResultado, 3000)
+    setTimeout(mostrarResultado, 1000)
     }
 //-----------------ADICIONAR A CLASSE NA PERGUNTA RESPONDIDA---------
     let metade = totaldeperguntas.length*10/2
@@ -194,5 +196,6 @@ function mostrarResultado(){
   </div>`
     }
 
+    window.scrollTo(0 , 4830)
 }
     
