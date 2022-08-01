@@ -50,7 +50,7 @@ function verificarTodosPreenchidos(){
 
           <div class="paraEsconder escondendo">
             <input class="campoTexto tituloPg"  id="titulo" type="text" required placeholder="Texto da pergunta">
-            <input class="campoTexto cor" id="titulo" type="text" required maxlength="7" placeholder="utiloze # com hexadecimal">
+            <input class="campoTexto cor" id="titulo" type="text" required maxlength="7" placeholder="utilize uma cor hexadecimal ex: #000000">
            
             <h4>Respostas correta</h4>
             <input class="campoTexto respostaCorreta-${i}" id="titulo" type="text" required placeholder="Texto da resposta">
