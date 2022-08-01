@@ -13,11 +13,7 @@ body{
     left: 0;
 }
 
-img{
-    left: 0;
-    top:0;
-    position: absolute;
-}
+
 
 .imagem-fundo{    /* capa */
     height: 142px;
@@ -37,26 +33,21 @@ img{
 }
 
 .resposta{
-    background-color: rgba(255, 0, 0, 0.226);
     position: relative;
     height: 172px;
     width: 40%;
-    margin-top: 22px;
     cursor: pointer;
     margin-top: 41px;
+    margin-bottom: 22px;
 }
 
 
 
 .tituloPg{
-    text-align: center;
     color: black;
     font-weight: 700;
     font-size: 23px;
     line-height: 27px;
-    position: absolute;
-    bottom: -25px ;
-    z-index: 1;
     width: 100%;
     display: flex;
     align-items: center;
