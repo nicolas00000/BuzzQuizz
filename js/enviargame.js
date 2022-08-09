@@ -1,15 +1,89 @@
+let quizzTESTE = {
+	title: "Título do quizz",
+	image: "https://http.cat/411.jpg",
+	questions: [
+		{
+			title: "Título da pergunta 1",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 2",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 3",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		}
+	],
+	levels: [
+		{
+			title: "Título do nível 1",
+			image: "https://http.cat/411.jpg",
+			text: "Descrição do nível 1",
+			minValue: 0
+		},
+		{
+			title: "Título do nível 2",
+			image: "https://http.cat/412.jpg",
+			text: "Descrição do nível 2",
+			minValue: 50
+		}
+	]
+}
+
+
+
 let NIVEL= []
-let travar = false;
+let travar = 0;
 document.onkeydown = teclado
 function teclado(e){
-    if(travar){
+    if(travar != 0){
         return
     }
-    if(e.keyCode===13){
-        verificarTodosPreenchidos()    
+    if(e.keyCode===13 && travar <= 0){
+        verificarTodosPreenchidos()   
+        travar++ 
     }
 
 }
+let title = ""
+let imageCapa = ""
 function verificarTodosPreenchidos(){
     const titulo = document.getElementById("titulo").value
     const capa = document.getElementById("URLcapa").value
@@ -24,11 +98,15 @@ function verificarTodosPreenchidos(){
         qtdNiveis >= 2 && 
         qtdPerguntas >= 3 && 
         qtdPerguntas <= 6 && 
-        qtdNiveis <= 3 ){
+        qtdNiveis <= 3  &&
+        travar <= 0 ){
+            title = titulo
+            imageCapa = capa
         criarPerguntas()
-        travar = true;
+        return
+        
     }else{
-        alert("Preencha todos os campos corretamente")
+        // alert("Preencha todos os campos corretamente")
     }
 
 
@@ -213,25 +291,71 @@ function validarUrlNiveis(){
     console.log(NIVEL)
     
     let enviar =  axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes", quizz)
-    console.log(quizz)
+    enviar.then(salvarLocalStorageID)
 } 
 
+function quizzPertenceUser(quizz){
+    const quizzesDoUser = obterQuizzPersistino()
 
-    //     levels: [
-    //         {
-    //             title: "Título do nível 1",
-    //             image: "https://http.cat/411.jpg",
-    //             text: "Descrição do nível 1",
-    //             minValue: 0
-    //         },
-    //         {
-    //             title: "Título do nível 2",
-    //             image: "https://http.cat/412.jpg",
-    //             text: "Descrição do nível 2",
-    //             minValue: 50
-    //         }
-    //     ]
-    // }
+    for(let i=0; i < quizzesDoUser.length;i++){
+        if(quizzesDoUser[i].id === quizz.id){
+            return true
+        }
+    }
+
+    return false 
+}
 
 
+function obterQuizzPersistino(){
+    let dados = localStorage.getItem("quizzes")
+    if(dados !== null){
+        const dadosDesentralizados = JSON.parse(dados)
+        return dadosDesentralizados
+    }
+    else{
+        return []
+    }
+}
 
+
+// const dadosLocalStorage = []
+function salvarLocalStorageID(resposta){
+
+    const dadosLocalStorage =  obterQuizzPersistino()
+
+    dadosLocalStorage.push({
+        id: resposta.data.id,
+        key: resposta.data.key,
+        image: imageCapa,
+        title: title
+    })
+    
+    //enviar para o localStorage o dados salvo do dadosLocalStorage
+    localStorage.setItem("quizzes",JSON.stringify(dadosLocalStorage))
+
+    // MostrarQuizesQueOusuarioJaTem();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//delete quizz
+ function majeRequestDelete(id, key){
+        let recInstace= axios.create({
+            headers:{'Secret-Key': key }
+        })
+        return recInstace.delete("https://mock-api.bootcamp.respondeai.com.br/api/v2/buzzquizz/quizzes/" + id)
+    }
