@@ -118,6 +118,17 @@ button{
     cursor: pointer;
 }
 
-button:hover{
+button:hover ,.voltar:hover{
     color: #FFF5F4;   
+}
+
+.voltar{
+    background: #eb3128;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #dddbdb;
+    border-radius: 30px;
 }

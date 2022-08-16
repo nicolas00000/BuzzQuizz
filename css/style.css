@@ -111,6 +111,7 @@ body{
 .semConteudo{
     text-align:center;
     width: 160px;
+    color: #000000b5;
 }
 .nenhumQuizz{
     width: 200px;
@@ -137,15 +138,22 @@ body{
     background-color:transparent;
     width: 151px;
     cursor:pointer;
-    color: wheat;
+    color: #575757;
+    text-decoration: none;
     padding: 7px;
     border: 1px dashed #EC362D;
     border-radius: 50px;
     cursor: pointer;
 }
 
+.criar:hover, .cardVazio:hover{
+    transform:scale(1.1);
+    color: rgb(228, 213, 213);
+}
+
 .meusquizes{
     width: 1200px;
+    position:relative;
 }
 .meusquizes,
 .lista{
@@ -208,11 +216,11 @@ body{
         justify-content: space-around;
     }
     .meusquizes{
-        justify-content: center;
-        width: 90%;
+        justify-content: space-between;
+        width: 70%;
     }
     .criarConteudo{
-        margin: 0 ;
+        margin: 0 auto;
     }
     .cardVazio{
         margin-left: 0px;
@@ -243,6 +251,13 @@ body{
         margin-left: 0px;
     }
 
+}
+
+@media (max-width : 1100px ){
+    .meusquizes{
+        width: 80%;
+        padding: 0 40px;
+    }
 }
 
 .titulodoquizz{
@@ -306,3 +321,22 @@ body{
     padding: 10px;
     justify-content: space-evenly;
 }
+
+.adc{
+    background: #ec362d;
+    z-index: 1;
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    right: 0;
+    top: -20px;
+    font-size: 22px;
+    width: 35px;
+    border-radius: 50%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
