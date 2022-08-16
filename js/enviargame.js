@@ -1,71 +1,3 @@
-let quizzTESTE = {
-	title: "Título do quizz",
-	image: "https://http.cat/411.jpg",
-	questions: [
-		{
-			title: "Título da pergunta 1",
-			color: "#123456",
-			answers: [
-				{
-					text: "Texto da resposta 1",
-					image: "https://http.cat/411.jpg",
-					isCorrectAnswer: true
-				},
-				{
-					text: "Texto da resposta 2",
-					image: "https://http.cat/412.jpg",
-					isCorrectAnswer: false
-				}
-			]
-		},
-		{
-			title: "Título da pergunta 2",
-			color: "#123456",
-			answers: [
-				{
-					text: "Texto da resposta 1",
-					image: "https://http.cat/411.jpg",
-					isCorrectAnswer: true
-				},
-				{
-					text: "Texto da resposta 2",
-					image: "https://http.cat/412.jpg",
-					isCorrectAnswer: false
-				}
-			]
-		},
-		{
-			title: "Título da pergunta 3",
-			color: "#123456",
-			answers: [
-				{
-					text: "Texto da resposta 1",
-					image: "https://http.cat/411.jpg",
-					isCorrectAnswer: true
-				},
-				{
-					text: "Texto da resposta 2",
-					image: "https://http.cat/412.jpg",
-					isCorrectAnswer: false
-				}
-			]
-		}
-	],
-	levels: [
-		{
-			title: "Título do nível 1",
-			image: "https://http.cat/411.jpg",
-			text: "Descrição do nível 1",
-			minValue: 0
-		},
-		{
-			title: "Título do nível 2",
-			image: "https://http.cat/412.jpg",
-			text: "Descrição do nível 2",
-			minValue: 50
-		}
-	]
-}
 
 
 
@@ -183,7 +115,7 @@ function enviarDadosNomeQuizz(){
         for(let i = 0 ; i < qtdPerguntas;i++){
             perguntas.push(
                 {
-                    title: tituloPG[i].value,
+                    title: tituloPG[i].value.toLowerCase(),
                     color: cor[i].value,
                     answers: []
                 }
@@ -266,7 +198,9 @@ function porsseguirNiveis(){
         
     }
 
-    caixa.innerHTML += `  <button onclick="validarUrlNiveis()"> Finalizar</button> `;
+    caixa.innerHTML += `  <button onclick="validarUrlNiveis()" class="btnFinalizar">  Finalizar </button> 
+        <a class="btn escondido voltar" href="index.html"> voltar </a>
+        `;
 
 }
 
@@ -319,9 +253,9 @@ function obterQuizzPersistino(){
 }
 
 
-// const dadosLocalStorage = []
 function salvarLocalStorageID(resposta){
 
+    setTimeout(botaoVoltar, 1000)
     const dadosLocalStorage =  obterQuizzPersistino()
 
     dadosLocalStorage.push({
@@ -337,20 +271,14 @@ function salvarLocalStorageID(resposta){
     // MostrarQuizesQueOusuarioJaTem();
 }
 
+function botaoVoltar(){
 
+    const btnFinalizar = document.querySelector(".btnFinalizar")
+    btnFinalizar.classList.add("escondido")
+    const btn = document.querySelector(".btn")
+    btn.classList.remove("escondido")
 
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 //delete quizz
  function majeRequestDelete(id, key){
